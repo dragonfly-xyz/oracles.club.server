@@ -67,8 +67,9 @@ Built with love by [Dragonfly Capital](https://www.dcp.capital/)
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
-Set up the appropriate environment variables corresponding to your personal api key's. Start a local redis context.
+Set up the appropriate environment variables corresponding to your personal api keys. 
 The following environment vars are required: ETHERSCAN_API_KEY, ALETHIO_API_KEY, COINBASE_API_KEY, COINBASE_SECRET_KEY, COINBASE_PRIVATE_KEY.
+Then start a local redis context (e.g. redis-server).
 
 ### Installation
 
@@ -78,7 +79,7 @@ To begin using this template, choose one of the following options to get started
 -   [Fork, Clone, or Download on GitHub](https://github.com/Dragonfly-Capital/oracles.club.server)
 
 ### Usage
-After the appropriate env variables are set, launch the server using:
+After the appropriate ENV variables are set, launch the server using:
 
 ```sh
 python3 oracles.py
