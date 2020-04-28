@@ -30,7 +30,7 @@
     <a href="https://github.com/Dragonfly-Capital/oracles.club.server"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Dragonfly-Capital/oracles.club">View Site</a>
+    <a href="https://oracles.club">View Site</a>
     ·
     <a href="https://github.com/Dragonfly-Capital/oracles.club.server/issues">Report Bug</a>
     ·
@@ -67,12 +67,8 @@ Built with love by [Dragonfly Capital](https://www.dcp.capital/)
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* python3 oracles.py
-```sh
-python3 oracles.py
-```
+Set up the appropriate environment variables corresponding to your personal api key's. Start a local redis context.
+The following environment vars are required: ETHERSCAN_API_KEY, ALETHIO_API_KEY, COINBASE_API_KEY, COINBASE_SECRET_KEY, COINBASE_PRIVATE_KEY.
 
 ### Installation
 
@@ -82,9 +78,11 @@ To begin using this template, choose one of the following options to get started
 -   [Fork, Clone, or Download on GitHub](https://github.com/Dragonfly-Capital/oracles.club.server)
 
 ### Usage
+After the appropriate env variables are set, launch the server using:
 
-After installation, run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
-
+```sh
+python3 oracles.py
+```
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -110,14 +108,6 @@ Ashwin Ramachandran - [@ashwinrz](https://twitter.com/ashwinrz) - ashwin@dcp.cap
 
 Project Link: [https://github.com/Dragonfly-Capital/oracles.club.server](https://github.com/Dragonfly-Capital/oracles.club.server)
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
