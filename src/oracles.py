@@ -62,97 +62,97 @@ def check_err(r):
 
 
 @app.route('/makerETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_maker_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(0, 'ETH'))
 
 @app.route('/makerBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_maker_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(0, 'BTC'))
 
 @app.route('/makerBAT')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_maker_bat_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(0, 'BAT'))
 
 @app.route('/chainlinkETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_chainlink_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(1, 'ETH'))
 
 @app.route('/chainlinkBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_chainlink_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(1, 'BTC'))
 
 @app.route('/chainlinkBAT')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_chainlink_bat_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(1, 'BAT'))
 
 @app.route('/compoundETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_compound_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(2, 'ETH'))
 
 @app.route('/compoundBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_compound_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(2, 'BTC'))
 
 @app.route('/compoundBAT')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_compound_bat_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(2, 'BAT'))
 
 @app.route('/dfusionETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_dfusion_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(3, 'ETH'))
 
 @app.route('/dfusionBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_dfusion_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(3, 'BTC'))
 
 @app.route('/uniswapETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_uniswap_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(4, 'ETH'))
 
 @app.route('/uniswapBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_uniswap_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(4, 'BTC'))
 
 @app.route('/uniswapBAT')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_uniswap_bat_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(4, 'BAT'))
 
 @app.route('/coinbaseETH')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_coinbase_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(5, 'ETH'))
 
 @app.route('/coinbaseBTC')
-@cache.cached(timeout=30)
+@cache.cached(timeout=300)
 def get_coinbase_btc_historical_data():
     # Optionally can use flask here to return all necessary data
     return json.dumps(get_historical_data(5, 'BTC'))

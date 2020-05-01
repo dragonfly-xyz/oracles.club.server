@@ -132,7 +132,7 @@ def get_compound_btc_price(eth_price):
 
         # Filter logs for btc price
         if data[:66] == '0x0000000000000000000000002260fac5e5542a773aa44fbcfedf7c193bc2c599':
-            number = data[-66:]
+            number = data[-64:]
             price = int(number, 16)
             updated_price = (price * pow(10, -28)) * eth_price
             compound_prices.append(updated_price)
@@ -179,7 +179,7 @@ def get_compound_bat_price(eth_price):
 
         # Filter logs for usdc price
         if data[:66] == '0x0000000000000000000000000d8775f648430679a709e98d2b0cb6250d2887ef':
-            number = data[-66:]
+            number = data[-64:]
             price = int(number, 16)
             updated_price = float(price * pow(10, -18)) * eth_price
             compound_prices.append(updated_price)
