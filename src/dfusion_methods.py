@@ -270,6 +270,37 @@ def get_dfusion_data(start_block, end_block):
 
 
 '''
+Get initial Dfusion data
+'''
+def get_dfusion_btc_data(start_block, end_block):
+    call = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock={}&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x0000000000000000000000000000000000000000000000000000000000000004&apikey='.format(start_block, end_block) + api_key
+    all = get(call)
+    result = all['result']
+    btc_price = 0
+
+    # This only pulls sells, we will need to pull buy orders in the future
+    for event in result:
+        if int(event['topics'][3], 16) == 4:
+            if int(event['data'][:66], 16) == 11:
+                sell_amt = int(event['data'][66:130], 16) * pow(10, -6)
+                buy_amt = int(event['data'][130:194], 16) * pow(10, -8)
+
+                btc_price = sell_amt/buy_amt
+
+        blockNumHex = event['blockNumber']
+        blockNum = int(blockNumHex, 16)
+
+        timestampHex = event['timeStamp']
+        timestamp = int(timestampHex, 16)
+
+        if btc_price is not 0:
+            # Insert into db
+            link = models.dfusion.DfusionBTC(timestamp=timestamp, blocknumber=blockNum, price=btc_price)
+            db.session.add(link)
+            db.session.commit()
+
+
+'''
 Populate Dfusion
 '''
 def populate_dfusion():
