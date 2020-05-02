@@ -141,19 +141,38 @@ def get_dfusion_btc_price():
     # Get latest block number
     block_number_request = get_latest_block_number() - 50000
 
-    call = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock=latest&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x0000000000000000000000000000000000000000000000000000000000000004&apikey='.format(block_number_request) + api_key
-    all = get(call)
-    result = all['result']
+    call = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock=latest&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x0000000000000000000000000000000000000000000000000000000000000002&apikey='.format(block_number_request) + api_key
+    call2 = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock=latest&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x0000000000000000000000000000000000000000000000000000000000000003&apikey='.format(block_number_request) + api_key
+    call3 = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock=latest&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x0000000000000000000000000000000000000000000000000000000000000004&apikey='.format(block_number_request) + api_key
+    call4 = endpoint_base + '?module=logs&action=getLogs&fromBlock={}&toBlock=latest&address=0x6F400810b62df8E13fded51bE75fF5393eaa841F&topic0=0xafa5bc1fb80950b7cb2353ba0cf16a6d68de75801f2dac54b2dae9268450010a&topic3=0x000000000000000000000000000000000000000000000000000000000000000b&apikey='.format(block_number_request) + api_key
+    first = get(call)
+    second = get(call2)
+    third = get(call3)
+    fourth = get(call4)
+    result = first['result']
+    for event in second['result']:
+        result.append(event)
+    for event in third['result']:
+        result.append(event)
+    for event in fourth['result']:
+        result.append(event)
+
     prices = []
     timestamp = 0
     btc_price = 0
 
     # This only pulls sells, we will need to pull buy orders in the future
     for event in result:
-        if int(event['topics'][3], 16) == 4:
+        if int(event['topics'][3], 16) == 4 or int(event['topics'][3], 16) == 2 or int(event['topics'][3], 16) == 3:
             if int(event['data'][:66], 16) == 11:
                 sell_amt = int(event['data'][66:130], 16) * pow(10, -6)
                 buy_amt = int(event['data'][130:194], 16) * pow(10, -8)
+
+                btc_price = sell_amt/buy_amt
+        elif int(event['topics'][3], 16) == 11:
+            if int(event['data'][:66], 16) == 4 or int(event['data'][:66], 16) == 2 or int(event['data'][:66], 16) == 3:
+                buy_amt = int(event['data'][66:130], 16) * pow(10, -8)
+                sell_amt = int(event['data'][130:194], 16) * pow(10, -6)
 
                 btc_price = sell_amt/buy_amt
 
