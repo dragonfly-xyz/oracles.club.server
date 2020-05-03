@@ -30,8 +30,8 @@ Get all dfusion prices
 '''
 def get_dfusion_prices():
     dfusion_instance = db.session.query(models.dfusion.DfusionETH).order_by(models.dfusion.DfusionETH.blocknumber.desc()).limit(10)[-10:]
-    dfusion_price = dfusion_instance[len(dfusion_instance) - 1].price
-    dfusion_timestamp = dfusion_instance[len(dfusion_instance) - 1].timestamp
+    dfusion_price = dfusion_instance[0].price
+    dfusion_timestamp = dfusion_instance[0].timestamp
     dfusion_last_price = 0
     for instance in list(reversed(dfusion_instance)):
         if instance.price == dfusion_price:
@@ -44,8 +44,8 @@ def get_dfusion_prices():
         dfusion_last_price = dfusion_price
 
     dfusion_btc_instance = db.session.query(models.dfusion.DfusionBTC).order_by(models.dfusion.DfusionBTC.blocknumber.desc()).limit(10)[-10:]
-    dfusion_btc_price = dfusion_btc_instance[len(dfusion_btc_instance) - 1].price
-    dfusion_btc_timestamp = dfusion_btc_instance[len(dfusion_btc_instance) - 1].timestamp
+    dfusion_btc_price = dfusion_btc_instance[0].price
+    dfusion_btc_timestamp = dfusion_btc_instance[0].timestamp
     dfusion_btc_last_price = 0
     for instance in list(reversed(dfusion_btc_instance)):
         if instance.price == dfusion_btc_price:

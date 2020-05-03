@@ -29,19 +29,19 @@ Get all Chainlink price pairs
 '''
 def get_chainlink_prices():
     chainlink_instance = db.session.query(models.chainlink.ChainlinkETH).order_by(models.chainlink.ChainlinkETH.blocknumber.desc()).limit(2)[-2:]
-    chainlink_price = chainlink_instance[1].price
-    chainlink_timestamp = chainlink_instance[1].timestamp
-    chainlink_last_price = chainlink_instance[0].price
+    chainlink_price = chainlink_instance[0].price
+    chainlink_timestamp = chainlink_instance[0].timestamp
+    chainlink_last_price = chainlink_instance[1].price
 
     chainlink_btc_instance = db.session.query(models.chainlink.ChainlinkBTC).order_by(models.chainlink.ChainlinkBTC.blocknumber.desc()).limit(2)[-2:]
-    chainlink_btc_price = chainlink_btc_instance[1].price
-    chainlink_btc_timestamp = chainlink_btc_instance[1].timestamp
-    chainlink_btc_last_price = chainlink_btc_instance[0].price
+    chainlink_btc_price = chainlink_btc_instance[0].price
+    chainlink_btc_timestamp = chainlink_btc_instance[0].timestamp
+    chainlink_btc_last_price = chainlink_btc_instance[1].price
 
     chainlink_bat_instance = db.session.query(models.chainlink.ChainlinkBAT).order_by(models.chainlink.ChainlinkBAT.blocknumber.desc()).limit(2)[-2:]
-    chainlink_bat_price = float(chainlink_bat_instance[1].price)
-    chainlink_bat_timestamp = chainlink_bat_instance[1].timestamp
-    chainlink_bat_last_price = float(chainlink_bat_instance[0].price)
+    chainlink_bat_price = float(chainlink_bat_instance[0].price)
+    chainlink_bat_timestamp = chainlink_bat_instance[0].timestamp
+    chainlink_bat_last_price = float(chainlink_bat_instance[1].price)
 
     return chainlink_price, chainlink_timestamp, chainlink_last_price, chainlink_btc_price, chainlink_btc_timestamp, chainlink_btc_last_price, chainlink_bat_price, chainlink_bat_timestamp, chainlink_bat_last_price
 

@@ -30,10 +30,10 @@ Get all Uniswap pairs
 '''
 def get_uniswap_prices():
     uniswap_instance = db.session.query(models.uniswap.UniswapETH).order_by(models.uniswap.UniswapETH.blocknumber.desc()).limit(10)[-10:]
-    uniswap_price = uniswap_instance[len(uniswap_instance)-1].price
-    uniswap_timestamp = uniswap_instance[len(uniswap_instance)-1].timestamp
+    uniswap_price = uniswap_instance[0].price
+    uniswap_timestamp = uniswap_instance[0].timestamp
     uniswap_last_price = 0
-    for instance in list(reversed(uniswap_instance)):
+    for instance in list(uniswap_instance):
         if instance.price == uniswap_price:
             continue
         else:
@@ -43,10 +43,10 @@ def get_uniswap_prices():
         uniswap_last_price = uniswap_price
 
     uniswap_btc_instance = db.session.query(models.uniswap.UniswapBTC).order_by(models.uniswap.UniswapBTC.blocknumber.desc()).limit(10)[-10:]
-    uniswap_btc_price = uniswap_btc_instance[len(uniswap_btc_instance)-1].price
-    uniswap_btc_timestamp = uniswap_btc_instance[len(uniswap_btc_instance)-1].timestamp
+    uniswap_btc_price = uniswap_btc_instance[0].price
+    uniswap_btc_timestamp = uniswap_btc_instance[0].timestamp
     uniswap_btc_last_price = 0
-    for instance in list(reversed(uniswap_btc_instance)):
+    for instance in list(uniswap_btc_instance):
         if instance.price == uniswap_btc_price:
             continue
         else:
@@ -56,10 +56,10 @@ def get_uniswap_prices():
         uniswap_btc_last_price = uniswap_btc_price
 
     uniswap_bat_instance = db.session.query(models.uniswap.UniswapBAT).order_by(models.uniswap.UniswapBAT.blocknumber.desc()).limit(10)[-10:]
-    uniswap_bat_price = float(uniswap_bat_instance[len(uniswap_bat_instance)-1].price)
-    uniswap_bat_timestamp = uniswap_bat_instance[len(uniswap_bat_instance)-1].timestamp
+    uniswap_bat_price = float(uniswap_bat_instance[0].price)
+    uniswap_bat_timestamp = uniswap_bat_instance[0].timestamp
     uniswap_bat_last_price = 0
-    for instance in list(reversed(uniswap_bat_instance)):
+    for instance in list(uniswap_bat_instance):
         if instance.price == uniswap_bat_price:
             continue
         else:

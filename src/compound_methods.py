@@ -30,19 +30,19 @@ Get all Compound prices
 '''
 def get_compound_prices():
     compound_instance = db.session.query(models.compound.CompoundETH).order_by(models.compound.CompoundETH.blocknumber.desc()).limit(2)[-2:]
-    compound_price = compound_instance[1].price
-    compound_timestamp = compound_instance[1].timestamp
-    compound_last_price = compound_instance[0].price
+    compound_price = compound_instance[0].price
+    compound_timestamp = compound_instance[0].timestamp
+    compound_last_price = compound_instance[1].price
 
     compound_btc_instance = db.session.query(models.compound.CompoundBTC).order_by(models.compound.CompoundBTC.blocknumber.desc()).limit(2)[-2:]
-    compound_btc_price = compound_btc_instance[1].price
-    compound_btc_timestamp = compound_btc_instance[1].timestamp
-    compound_btc_last_price = compound_btc_instance[0].price
+    compound_btc_price = compound_btc_instance[0].price
+    compound_btc_timestamp = compound_btc_instance[0].timestamp
+    compound_btc_last_price = compound_btc_instance[1].price
 
     compound_bat_instance = db.session.query(models.compound.CompoundBAT).order_by(models.compound.CompoundBAT.blocknumber.desc()).limit(10)[-2:]
-    compound_bat_price = float(compound_bat_instance[1].price)
-    compound_bat_timestamp = compound_bat_instance[1].timestamp
-    compound_bat_last_price = float(compound_bat_instance[0].price)
+    compound_bat_price = float(compound_bat_instance[0].price)
+    compound_bat_timestamp = compound_bat_instance[0].timestamp
+    compound_bat_last_price = float(compound_bat_instance[1].price)
 
     return compound_price, compound_timestamp, compound_last_price, compound_btc_price, compound_btc_timestamp, compound_btc_last_price, compound_bat_price, compound_bat_timestamp, compound_bat_last_price
 

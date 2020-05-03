@@ -37,21 +37,19 @@ def get_coinbase_prices():
     coinbase_price = 0
     coinbase_timestamp = 0
     coinbase_last_price = 0
-    if len(coinbase_instance) > 0:
-        coinbase_last_price = coinbase_instance[0].price
-        if len(coinbase_instance) > 1:
-            coinbase_price = coinbase_instance[1].price
-            coinbase_timestamp = coinbase_instance[1].timestamp
+    if len(coinbase_instance) > 1:
+        coinbase_last_price = coinbase_instance[1].price
+        coinbase_price = coinbase_instance[0].price
+        coinbase_timestamp = coinbase_instance[0].timestamp
 
     coinbase_btc_instance = db.session.query(models.coinbase.CoinbaseBTC).order_by(models.coinbase.CoinbaseBTC.timestamp.desc()).limit(2)[-2:]
     coinbase_btc_price = 0
     coinbase_btc_timestamp = 0
     coinbase_btc_last_price = 0
-    if len(coinbase_btc_instance) > 0:
-        coinbase_btc_last_price = coinbase_btc_instance[0].price
-        if len(coinbase_btc_instance) > 1:
-            coinbase_btc_price = coinbase_btc_instance[1].price
-            coinbase_btc_timestamp = coinbase_btc_instance[1].timestamp
+    if len(coinbase_btc_instance) > 1:
+        coinbase_btc_last_price = coinbase_btc_instance[1].price
+        coinbase_btc_price = coinbase_btc_instance[0].price
+        coinbase_btc_timestamp = coinbase_btc_instance[0].timestamp
 
     return coinbase_price, coinbase_timestamp, coinbase_last_price, coinbase_btc_price, coinbase_btc_timestamp, coinbase_btc_last_price
 

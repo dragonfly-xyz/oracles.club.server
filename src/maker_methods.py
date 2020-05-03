@@ -29,19 +29,19 @@ Get all Maker prices pairs
 '''
 def get_maker_prices():
     maker_instance = db.session.query(models.maker.MakerETH).order_by(models.maker.MakerETH.blocknumber.desc()).limit(2)[-2:]
-    maker_price = maker_instance[1].price
-    maker_timestamp = maker_instance[1].timestamp
-    maker_last_price = maker_instance[0].price
+    maker_price = maker_instance[0].price
+    maker_timestamp = maker_instance[0].timestamp
+    maker_last_price = maker_instance[1].price
 
     maker_btc_instance = db.session.query(models.maker.MakerBTC).order_by(models.maker.MakerBTC.blocknumber.desc()).limit(2)[-2:]
-    maker_btc_price = maker_btc_instance[1].price
-    maker_btc_timestamp = maker_btc_instance[1].timestamp
-    maker_btc_last_price = maker_btc_instance[0].price
+    maker_btc_price = maker_btc_instance[0].price
+    maker_btc_timestamp = maker_btc_instance[0].timestamp
+    maker_btc_last_price = maker_btc_instance[1].price
 
     maker_bat_instance = db.session.query(models.maker.MakerBAT).order_by(models.maker.MakerBAT.blocknumber.desc()).limit(2)[-2:]
-    maker_bat_price = maker_bat_instance[1].price
-    maker_bat_timestamp = maker_bat_instance[1].timestamp
-    maker_bat_last_price = maker_bat_instance[0].price
+    maker_bat_price = maker_bat_instance[0].price
+    maker_bat_timestamp = maker_bat_instance[0].timestamp
+    maker_bat_last_price = maker_bat_instance[1].price
 
     return maker_price, maker_timestamp, maker_last_price, maker_btc_price, maker_btc_timestamp, maker_btc_last_price, maker_bat_price, maker_bat_timestamp, maker_bat_last_price
 
