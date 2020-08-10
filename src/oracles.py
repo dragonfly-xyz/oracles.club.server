@@ -223,11 +223,6 @@ def get_current_data():
                 'last_updated': uniswap_btc_timestamp,
                 'prev_price': uniswap_btc_last_price
             },
-            'Dfusion': {
-                'cur_price': dfusion_btc_price,
-                'last_updated': dfusion_btc_timestamp,
-                'prev_price': dfusion_btc_last_price
-            },
             'Coinbase': {
                 'cur_price': coinbase_btc_price,
                 'last_updated': coinbase_btc_timestamp,
@@ -328,11 +323,6 @@ def get_data_websocket():
                 'cur_price': uniswap_btc_price,
                 'last_updated': uniswap_btc_timestamp,
                 'prev_price': uniswap_btc_last_price
-            },
-            'Dfusion': {
-                'cur_price': dfusion_btc_price,
-                'last_updated': dfusion_btc_timestamp,
-                'prev_price': dfusion_btc_last_price
             },
             'Coinbase': {
                 'cur_price': coinbase_btc_price,
